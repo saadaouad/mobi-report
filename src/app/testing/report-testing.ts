@@ -5,10 +5,8 @@ import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/cor
 import { provideRouter, Routes } from '@angular/router';
 import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
-import { MOCK_API_DELAY } from '../core/mocks/mock-api.token';
-import { ReportEffects } from '../features/reports/store/report.effects';
-import { reportReducer } from '../features/reports/store/report.reducer';
-import { REPORTS_FEATURE_KEY } from '../features/reports/store/report.selectors';
+import { MOCK_API_DELAY } from '@core/mocks';
+import { ReportEffects, REPORTS_FEATURE_KEY, reportReducer } from '@reports/store';
 
 registerLocaleData(localeFr);
 

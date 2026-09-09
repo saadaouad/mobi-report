@@ -6,13 +6,10 @@ import { Router } from '@angular/router';
 import { Actions, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { map, of, switchMap } from 'rxjs';
-import { CreateReportPayload } from '../../../../core/models/report.model';
-import { ErrorStateComponent } from '../../../../shared/components/error-state/error-state.component';
-import { LoadingSpinnerComponent } from '../../../../shared/components/loading-spinner/loading-spinner.component';
-import { PageHeaderComponent } from '../../../../shared/components/page-header/page-header.component';
-import { ReportFormComponent } from '../../components/report-form/report-form.component';
-import { ReportActions } from '../../store/report.actions';
+import { CreateReportPayload } from '@core/models';
+import { ReportFormComponent } from '@reports/components';
 import {
+  ReportActions,
   selectExistingEmails,
   selectFieldErrors,
   selectObservations,
@@ -20,7 +17,12 @@ import {
   selectReportsLoading,
   selectReportsSaving,
   selectSaveError,
-} from '../../store/report.selectors';
+} from '@reports/store';
+import {
+  ErrorStateComponent,
+  LoadingSpinnerComponent,
+  PageHeaderComponent,
+} from '@shared/components';
 
 @Component({
   selector: 'app-report-form-page',

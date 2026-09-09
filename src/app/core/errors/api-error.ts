@@ -1,4 +1,4 @@
-import { ApiValidationErrorBody, FieldErrors } from '../models/report.model';
+import { ApiValidationErrorBody, FieldErrors } from '@core/models';
 
 export class ApiHttpError {
   constructor(

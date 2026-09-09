@@ -1,6 +1,5 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { Observation } from '../../../core/models/observation.model';
-import { CreateReportPayload, FieldErrors, Report } from '../../../core/models/report.model';
+import { CreateReportPayload, FieldErrors, Observation, Report } from '@core/models';
 
 export const ReportActions = createActionGroup({
   source: 'Reports',

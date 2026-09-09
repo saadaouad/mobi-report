@@ -1,9 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { Observable, throwError, timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { ApiHttpError } from '../errors/api-error';
-import { Observation } from '../models/observation.model';
-import { CreateReportPayload, Report } from '../models/report.model';
+import { ApiHttpError } from '@core/errors';
+import { CreateReportPayload, Observation, Report } from '@core/models';
 import { OBSERVATIONS_MOCK } from './observations.mock';
 import { REPORTS_MOCK } from './reports.mock';
 import { MOCK_API_DELAY } from './mock-api.token';

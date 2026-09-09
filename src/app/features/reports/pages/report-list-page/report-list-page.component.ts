@@ -4,18 +4,20 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { EmptyStateComponent } from '../../../../shared/components/empty-state/empty-state.component';
-import { ErrorStateComponent } from '../../../../shared/components/error-state/error-state.component';
-import { LoadingSpinnerComponent } from '../../../../shared/components/loading-spinner/loading-spinner.component';
-import { PageHeaderComponent } from '../../../../shared/components/page-header/page-header.component';
-import { ReportListComponent } from '../../components/report-list/report-list.component';
-import { ReportActions } from '../../store/report.actions';
+import { ReportListComponent } from '@reports/components';
 import {
+  ReportActions,
   selectReportStats,
   selectReports,
   selectReportsError,
   selectReportsLoading,
-} from '../../store/report.selectors';
+} from '@reports/store';
+import {
+  EmptyStateComponent,
+  ErrorStateComponent,
+  LoadingSpinnerComponent,
+  PageHeaderComponent,
+} from '@shared/components';
 
 @Component({
   selector: 'app-report-list-page',

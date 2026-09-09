@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { MockApiClient } from '../mocks/mock-api.client';
-import { CreateReportPayload, Report } from '../models/report.model';
+import { MockApiClient } from '@core/mocks';
+import { CreateReportPayload, Report } from '@core/models';
 
 @Injectable({ providedIn: 'root' })
 export class ReportService {

@@ -7,14 +7,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
-import { Observation } from '../../../../core/models/observation.model';
 import {
   CreateReportPayload,
   FieldErrors,
+  Observation,
   Report,
   SEX_OPTIONS,
   Sex,
-} from '../../../../core/models/report.model';
+} from '@core/models';
 import {
   maxAgeValidator,
   minSelectedValidator,
@@ -23,7 +23,7 @@ import {
   startOfDay,
   toIsoDate,
   uniqueEmailValidator,
-} from '../../../../shared/validators/date.validators';
+} from '@shared/validators';
 import { ObservationChipsComponent } from '../observation-chips/observation-chips.component';
 
 @Component({

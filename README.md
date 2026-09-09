@@ -56,6 +56,17 @@ src/app/
     └── store/      actions, reducer, effects, selectors
 ```
 
+Chaque dossier public a un `index.ts` (barrel). Les imports croisés passent par des path aliases :
+
+| Alias | Cible |
+| --- | --- |
+| `@core` / `@core/models` / `@core/services` / `@core/mocks` / `@core/errors` | `src/app/core` |
+| `@shared` / `@shared/components` / `@shared/validators` | `src/app/shared` |
+| `@reports` / `@reports/store` / `@reports/components` / `@reports/pages` | `src/app/features/reports` |
+| `@testing` | `src/app/testing` |
+
+Les pages lazy-loadées restent importées par fichier dans `app.routes.ts` pour ne pas casser le code splitting. Les composants d’une même feature s’importent en relatif entre eux pour éviter les cycles via le barrel.
+
 Les dossiers « god folders » (`components/`, `services/`, `models/` à la racine) ont été évités volontairement : tout ce qui concerne un signalement vit dans `features/reports`.
 
 ## Flux de données
@@ -145,7 +156,9 @@ Le preflight Tailwind est désactivé pour ne pas casser les styles Material.
 Les specs vivent à côté du code (`*.spec.ts`) plus deux fichiers d’intégration dans `src/app/features/reports/`.
 
 ```bash
-npm test -- --watch=false
+npm test                 # unitaires + intégration
+npm test:unit            # *.spec.ts, hors *.integration.spec.ts
+npm test:integration     # *.integration.spec.ts
 ```
 
 ### Unitaires

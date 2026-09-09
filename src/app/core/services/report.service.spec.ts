@@ -1,9 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { firstValueFrom } from 'rxjs';
-import { ApiHttpError } from '../errors/api-error';
-import { MockApiClient } from '../mocks/mock-api.client';
-import { MOCK_API_DELAY } from '../mocks/mock-api.token';
-import { CreateReportPayload } from '../models/report.model';
+import { ApiHttpError } from '@core/errors';
+import { MOCK_API_DELAY, MockApiClient } from '@core/mocks';
+import { CreateReportPayload } from '@core/models';
 import { ReportService } from './report.service';
 
 function payload(email: string): CreateReportPayload {

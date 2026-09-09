@@ -1,7 +1,7 @@
 import { Component, forwardRef, input, signal } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
-import { Observation } from '../../../../core/models/observation.model';
+import { Observation } from '@core/models';
 
 @Component({
   selector: 'app-observation-chips',

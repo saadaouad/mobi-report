@@ -3,7 +3,7 @@ import localeFr from '@angular/common/locales/fr';
 import { LOCALE_ID } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
-import { REPORTS_MOCK } from '../../../../core/mocks/reports.mock';
+import { REPORTS_MOCK } from '@core/mocks';
 import { ReportListComponent } from './report-list.component';
 
 registerLocaleData(localeFr);

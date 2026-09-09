@@ -15,7 +15,7 @@
     <app-error-state [message]="error" (retry)="retry()" />
   } @else if (reports$ | async; as reports) {
     @if (stats$ | async; as stats) {
-      <section class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+      <section class="grid grid-cols-1 gap-4 sm:grid-cols-3 mt-4">
         <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
           <p class="text-sm text-slate-600">Signalements</p>
           <p class="mt-2 text-3xl font-semibold text-slate-900">{{ stats.total }}</p>
@@ -36,7 +36,7 @@
         <a matButton="filled" routerLink="/reports/new">Créer un signalement</a>
       </app-empty-state>
     } @else {
-      <section class="space-y-4">
+      <section class="space-y-4 my-10">
         <h2 class="text-lg font-semibold text-slate-900">Signalements récents</h2>
         <app-report-list [reports]="reports" />
       </section>

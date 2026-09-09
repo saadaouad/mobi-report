@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { firstValueFrom } from 'rxjs';
-import { MOCK_API_DELAY } from '../mocks/mock-api.token';
+import { MOCK_API_DELAY } from '@core/mocks';
 import { ObservationService } from './observation.service';
 
 describe('ObservationService', () => {

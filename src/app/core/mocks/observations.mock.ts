@@ -1,4 +1,4 @@
-import { Observation } from '../models/observation.model';
+import { Observation } from '@core/models';
 
 export const OBSERVATIONS_MOCK: Observation[] = [
   { id: 1, name: 'Réseau' },

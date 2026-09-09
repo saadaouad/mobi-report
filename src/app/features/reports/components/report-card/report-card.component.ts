@@ -4,14 +4,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { Report } from '../../../../core/models/report.model';
+import { Report } from '@core/models';
 
 @Component({
   selector: 'app-report-card',
   imports: [DatePipe, MatButtonModule, MatChipsModule, MatIconModule, RouterLink],
+  host: {
+    class: 'block h-full',
+  },
   template: `
     <article
-      class="flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-cyan-200 hover:shadow-md"
+      class="flex h-72 flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-cyan-200 hover:shadow-md"
     >
       <div class="flex items-start justify-between gap-3">
         <div>

@@ -1,4 +1,4 @@
-import { Report } from '../models/report.model';
+import { Report } from '@core/models';
 
 export const REPORTS_MOCK: Report[] = [
   {

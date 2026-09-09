@@ -1,6 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { Observation } from '../../../core/models/observation.model';
-import { FieldErrors, Report } from '../../../core/models/report.model';
+import { FieldErrors, Observation, Report } from '@core/models';
 import { ReportActions } from './report.actions';
 
 export interface ReportState {
