@@ -1,7 +1,7 @@
 import { Component, forwardRef, input, signal } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
-import { Observation } from '@core/models';
+import type { Observation } from '@core/models';
 
 @Component({
   selector: 'app-observation-chips',
@@ -53,7 +53,11 @@ export class ObservationChipsComponent implements ControlValueAccessor {
   }
 
   onSelectionChange(value: number[] | number | undefined): void {
-    const selected = Array.isArray(value) ? value.map(Number) : value !== undefined ? [Number(value)] : [];
+    const selected = Array.isArray(value)
+      ? value.map(Number)
+      : value !== undefined
+        ? [Number(value)]
+        : [];
     this.selectedIds.set(selected);
     this.onChange(selected);
     this.onTouched();

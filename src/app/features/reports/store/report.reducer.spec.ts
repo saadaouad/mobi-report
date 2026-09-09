@@ -1,6 +1,6 @@
+import { REPORTS_MOCK } from '@core/mocks';
 import { ReportActions } from './report.actions';
 import { initialReportState, reportReducer } from './report.reducer';
-import { REPORTS_MOCK } from '@core/mocks';
 
 describe('reportReducer', () => {
   it('sets loading when reports are requested', () => {

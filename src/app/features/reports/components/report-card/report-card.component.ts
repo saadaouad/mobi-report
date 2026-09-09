@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { Report } from '@core/models';
+import type { Report } from '@core/models';
 
 @Component({
   selector: 'app-report-card',

@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
 import { MockApiClient } from '@core/mocks';
-import { Observation } from '@core/models';
+import type { Observation } from '@core/models';
+import type { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ObservationService {

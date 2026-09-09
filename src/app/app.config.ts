@@ -1,19 +1,19 @@
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import {
-  ApplicationConfig,
+  type ApplicationConfig,
   isDevMode,
   LOCALE_ID,
   provideBrowserGlobalErrorListeners,
 } from '@angular/core';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { REPORTS_FEATURE_KEY, ReportEffects, reportReducer } from '@reports/store';
 import { routes } from './app.routes';
-import { ReportEffects, REPORTS_FEATURE_KEY, reportReducer } from '@reports/store';
 
 registerLocaleData(localeFr);
 

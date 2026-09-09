@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
-import { firstValueFrom } from 'rxjs';
-import { ApiHttpError } from '@core/errors';
+import type { ApiHttpError } from '@core/errors';
 import { MOCK_API_DELAY, MockApiClient } from '@core/mocks';
-import { CreateReportPayload } from '@core/models';
+import type { CreateReportPayload } from '@core/models';
+import { firstValueFrom } from 'rxjs';
 import { ReportService } from './report.service';
 
 function payload(email: string): CreateReportPayload {
@@ -39,13 +39,17 @@ describe('ReportService', () => {
   });
 
   it('creates a report and returns 204 (undefined body)', async () => {
-    await expect(firstValueFrom(service.createReport(payload('new.user@mobireport.com')))).resolves.toBeUndefined();
+    await expect(
+      firstValueFrom(service.createReport(payload('new.user@mobireport.com'))),
+    ).resolves.toBeUndefined();
     const reports = await firstValueFrom(service.getReports());
     expect(reports.some((report) => report.author.email === 'new.user@mobireport.com')).toBe(true);
   });
 
   it('rejects a duplicate email with the annex 400 payload', async () => {
-    await expect(firstValueFrom(service.createReport(payload('j.doe@mobireport.com')))).rejects.toMatchObject({
+    await expect(
+      firstValueFrom(service.createReport(payload('j.doe@mobireport.com'))),
+    ).rejects.toMatchObject({
       status: 400,
       error: { author: { email: ['This value already exist'] } },
     } satisfies Partial<ApiHttpError>);

@@ -1,4 +1,4 @@
-import { Observation } from './observation.model';
+import type { Observation } from './observation.model';
 
 export type Sex = 'Homme' | 'Femme' | 'Non-binaire';
 

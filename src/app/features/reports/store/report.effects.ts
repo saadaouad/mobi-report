@@ -1,8 +1,8 @@
-import { inject, Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, mergeMap, of, switchMap } from 'rxjs';
+import { Injectable, inject } from '@angular/core';
 import { getApiErrorMessage, getFieldErrors } from '@core/errors';
 import { ObservationService, ReportService } from '@core/services';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { catchError, map, mergeMap, of, switchMap } from 'rxjs';
 import { ReportActions } from './report.actions';
 
 @Injectable()
