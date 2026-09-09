@@ -1,0 +1,127 @@
+<form class="space-y-6" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  @if (saveError() && !fieldErrors()?.email?.length) {
+    <div class="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800" role="alert">
+      {{ saveError() }}
+    </div>
+  }
+
+  <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+    <h2 class="text-lg font-semibold text-slate-900">Auteur</h2>
+    <p class="mt-1 text-sm text-slate-600">Informations de la personne à l’origine du signalement.</p>
+
+    <div class="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2">
+      <mat-form-field>
+        <mat-label>Prénom</mat-label>
+        <input matInput formControlName="firstName" maxlength="50" autocomplete="given-name" data-testid="first-name" />
+        @if (form.controls.firstName.hasError('required')) {
+          <mat-error>Le prénom est obligatoire.</mat-error>
+        }
+        @if (form.controls.firstName.hasError('maxlength')) {
+          <mat-error>Le prénom ne peut pas dépasser 50 caractères.</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Nom</mat-label>
+        <input matInput formControlName="lastName" maxlength="50" autocomplete="family-name" data-testid="last-name" />
+        @if (form.controls.lastName.hasError('required')) {
+          <mat-error>Le nom est obligatoire.</mat-error>
+        }
+        @if (form.controls.lastName.hasError('maxlength')) {
+          <mat-error>Le nom ne peut pas dépasser 50 caractères.</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Date de naissance</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          [min]="oldestBirthDate"
+          [max]="today"
+          formControlName="birthDate"
+          data-testid="birth-date"
+        />
+        <mat-datepicker-toggle matIconSuffix [for]="picker" />
+        <mat-datepicker #picker />
+        @if (form.controls.birthDate.hasError('required')) {
+          <mat-error>La date de naissance est obligatoire.</mat-error>
+        }
+        @if (form.controls.birthDate.hasError('maxAge')) {
+          <mat-error>La date de naissance ne peut pas dépasser 100 ans.</mat-error>
+        }
+        @if (form.controls.birthDate.hasError('futureDate')) {
+          <mat-error>La date de naissance ne peut pas être dans le futur.</mat-error>
+        }
+        @if (form.controls.birthDate.hasError('invalidDate')) {
+          <mat-error>La date saisie est invalide.</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Sexe</mat-label>
+        <mat-select formControlName="sex" data-testid="sex">
+          @for (option of sexOptions; track option) {
+            <mat-option [value]="option">{{ option }}</mat-option>
+          }
+        </mat-select>
+        @if (form.controls.sex.hasError('required')) {
+          <mat-error>Le sexe est obligatoire.</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field class="md:col-span-2">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" autocomplete="email" data-testid="email" />
+        @if (form.controls.email.hasError('required')) {
+          <mat-error>L’email est obligatoire.</mat-error>
+        } @else if (form.controls.email.hasError('email')) {
+          <mat-error>Veuillez saisir un email valide.</mat-error>
+        } @else if (form.controls.email.hasError('uniqueEmail')) {
+          <mat-error>Cette adresse email existe déjà.</mat-error>
+        }
+      </mat-form-field>
+    </div>
+  </section>
+
+  <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+    <h2 class="text-lg font-semibold text-slate-900">Description</h2>
+    <p class="mt-1 text-sm text-slate-600">Expliquez le problème rencontré.</p>
+
+    <mat-form-field class="mt-5 w-full">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        rows="5"
+        formControlName="description"
+        maxlength="2000"
+        data-testid="description"
+      ></textarea>
+      @if (form.controls.description.hasError('required')) {
+        <mat-error>La description est obligatoire.</mat-error>
+      }
+    </mat-form-field>
+  </section>
+
+  <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+    <h2 class="text-lg font-semibold text-slate-900">Observations</h2>
+    <p class="mt-1 text-sm text-slate-600">Choisissez une ou plusieurs observations dans la liste.</p>
+
+    <div class="mt-4">
+      <app-observation-chips formControlName="observations" [observations]="observations()" />
+    </div>
+    @if (form.controls.observations.touched && form.controls.observations.hasError('minSelected')) {
+      <p class="mt-2 text-sm text-red-700">Sélectionnez au moins une observation.</p>
+    }
+  </section>
+
+  <div class="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
+    <button matButton type="button" (click)="cancelled.emit()" [disabled]="saving()">Annuler</button>
+    <button matButton="filled" type="submit" data-testid="submit-report" [disabled]="saving()">
+      @if (saving()) {
+        <mat-spinner diameter="18" />
+      }
+      {{ submitLabel() }}
+    </button>
+  </div>
+</form>

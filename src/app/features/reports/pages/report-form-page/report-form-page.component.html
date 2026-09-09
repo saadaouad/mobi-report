@@ -1,0 +1,32 @@
+<div class="mx-auto max-w-3xl space-y-8">
+  <app-page-header
+    [title]="isEditMode() ? 'Modifier un signalement' : 'Nouveau signalement'"
+    [subtitle]="
+      isEditMode()
+        ? 'Mettez à jour les informations de l’auteur, la description et les observations.'
+        : 'Renseignez l’auteur, décrivez le problème et sélectionnez les observations concernées.'
+    "
+  />
+
+  @if (isEditMode() && (loading$ | async) && !(report$ | async)) {
+    <app-loading-spinner />
+  } @else if (isEditMode() && !(loading$ | async) && !(report$ | async)) {
+    <app-error-state
+      message="Ce signalement est introuvable."
+      [retryable]="false"
+    />
+  } @else {
+    <app-report-form
+      [observations]="(observations$ | async) ?? []"
+      [existingEmails]="(existingEmails$ | async) ?? []"
+      [currentEmail]="(currentEmail$ | async) ?? null"
+      [saving]="(saving$ | async) ?? false"
+      [saveError]="(saveError$ | async) ?? null"
+      [fieldErrors]="(fieldErrors$ | async) ?? null"
+      [initialReport]="(report$ | async) ?? null"
+      [submitLabel]="isEditMode() ? 'Enregistrer les modifications' : 'Créer le signalement'"
+      (submitted)="onSubmit($event)"
+      (cancelled)="onCancel()"
+    />
+  }
+</div>
