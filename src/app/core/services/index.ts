@@ -1,2 +1,2 @@
-export * from './report.service';
 export * from './observation.service';
+export * from './report.service';

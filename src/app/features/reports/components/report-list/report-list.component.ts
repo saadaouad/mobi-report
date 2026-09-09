@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { Report } from '@core/models';
+import type { Report } from '@core/models';
 import { ReportCardComponent } from '../report-card/report-card.component';
 
 @Component({

@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { AppComponent } from '../../app.component';
-import { routes } from '../../app.routes';
 import { MockApiClient } from '@core/mocks';
 import { ReportFormComponent } from '@reports/components';
 import { provideReportTesting } from '@testing';
+import { AppComponent } from '../../app.component';
+import { routes } from '../../app.routes';
 
 describe('report form integration', () => {
   beforeEach(async () => {

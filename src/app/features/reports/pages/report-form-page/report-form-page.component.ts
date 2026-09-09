@@ -1,12 +1,11 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, DestroyRef, inject, input, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, input, type OnInit } from '@angular/core';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import type { CreateReportPayload } from '@core/models';
 import { Actions, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { map, of, switchMap } from 'rxjs';
-import { CreateReportPayload } from '@core/models';
 import { ReportFormComponent } from '@reports/components';
 import {
   ReportActions,
@@ -23,6 +22,7 @@ import {
   LoadingSpinnerComponent,
   PageHeaderComponent,
 } from '@shared/components';
+import { map, of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-report-form-page',

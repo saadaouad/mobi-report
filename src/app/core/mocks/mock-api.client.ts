@@ -1,11 +1,11 @@
 import { Injectable, inject } from '@angular/core';
+import { ApiHttpError } from '@core/errors';
+import type { CreateReportPayload, Observation, Report } from '@core/models';
 import { Observable, throwError, timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { ApiHttpError } from '@core/errors';
-import { CreateReportPayload, Observation, Report } from '@core/models';
+import { MOCK_API_DELAY } from './mock-api.token';
 import { OBSERVATIONS_MOCK } from './observations.mock';
 import { REPORTS_MOCK } from './reports.mock';
-import { MOCK_API_DELAY } from './mock-api.token';
 
 /**
  * In-memory HTTP layer that mirrors the annex contract:
@@ -136,10 +136,14 @@ export class MockApiClient {
       });
     }
 
-    return timer(this.delayMs).pipe(switchMap(() => new Observable<T>((subscriber) => {
-      subscriber.next(body);
-      subscriber.complete();
-    })));
+    return timer(this.delayMs).pipe(
+      switchMap(
+        () =>
+          new Observable<T>((subscriber) => {
+            subscriber.next(body);
+            subscriber.complete();
+          }),
+      ),
+    );
   }
 }
-

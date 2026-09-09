@@ -1,4 +1,4 @@
-import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import type { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 export function startOfDay(date: Date): Date {
   return new Date(date.getFullYear(), date.getMonth(), date.getDate());
@@ -81,6 +81,8 @@ export function uniqueEmailValidator(
       return null;
     }
 
-    return existingEmails().some((item) => item.toLowerCase() === email) ? { uniqueEmail: true } : null;
+    return existingEmails().some((item) => item.toLowerCase() === email)
+      ? { uniqueEmail: true }
+      : null;
   };
 }

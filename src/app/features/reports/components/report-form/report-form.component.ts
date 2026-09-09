@@ -8,12 +8,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import {
-  CreateReportPayload,
-  FieldErrors,
-  Observation,
-  Report,
+  type CreateReportPayload,
+  type FieldErrors,
+  type Observation,
+  type Report,
   SEX_OPTIONS,
-  Sex,
+  type Sex,
 } from '@core/models';
 import {
   maxAgeValidator,

@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { OBSERVATIONS_MOCK } from '@core/mocks';
 import { ObservationChipsComponent } from './observation-chips.component';
-import { Component } from '@angular/core';
 
 @Component({
   imports: [ReactiveFormsModule, ObservationChipsComponent],
