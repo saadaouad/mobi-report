@@ -10,9 +10,10 @@
     "test:unit": "ng test --configuration=unit --watch=false",
     "test:integration": "ng test --configuration=integration --watch=false",
     "test:watch": "ng test",
-    "lint": "biome check .",
+    "lint": "biome lint .",
     "lint:fix": "biome check --write .",
-    "format": "biome format --write ."
+    "format": "biome format --write .",
+    "format:check": "biome format ."
   },
   "private": true,
   "packageManager": "npm@11.16.0",
